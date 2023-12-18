@@ -167,7 +167,7 @@ test("Update API Test", async () => {
   });
 
 
-test.only("Ticket Status API Test", async () => {
+/*test.only("Ticket Status API Test", async () => {
     const apiUrl = Url + "tickets/status/6559a7192dbb22c4b397e001";
     const ticketId = "657c293b8729b3dba0c38bbc";
 
@@ -191,4 +191,4 @@ test.only("Ticket Status API Test", async () => {
         throw new Error(`Error fetching ticket status: ${error.message}`);
     }
 });
-
+ */

@@ -48,7 +48,7 @@ test("API GetTicket_by_Id", async ({}) => {
       }
 
         
-        const response = await axios.get(Url + "tickets/1103", {headers
+        const response = await axios.get(Url + "tickets/1157", {headers
            
         });
 
@@ -102,12 +102,14 @@ test("API Create Test", async () => {
 test("API Post CreateComment", async () => {
     try {
         const commentData = {
-            _id: '657809d4c7547e1050475cf1',
-            comment: 'Hi Check API testing comment added',
-        };
-        const apiUrl = Url + "tickets/addcomment";
+            "_id": "657c293b8729b3dba0c38b7b", //ticket id
+            "comment": "Hi Check API testing comment added"
 
-        const response = await axios.post(apiUrl, commentData, {
+
+        };
+       
+
+        const response = await axios.post(Url+"tickets/addcomment", commentData, {
             headers: {
                 "Content-Type": "application/json",
                 "accesstoken": accessToken,
@@ -123,7 +125,7 @@ test("API Post CreateComment", async () => {
 
 test("Create Note API Test", async () => {
   const noteData = {
-    "ticketid": "657809d4c7547e1050475cf1",
+    "ticketid": "657c293b8729b3dba0c38bbc",
     "note": "Hi Check ApiNote"
   };
 
@@ -157,7 +159,7 @@ test("Update API Test", async () => {
     };
   
     try {
-      const response = await axios.put(Url + "tickets/6572d4152c11db7a312cd375", updateData, { headers });
+      const response = await axios.put(Url + "tickets/657c293b8729b3dba0c38bbc", updateData, { headers });
       console.log('Update successful:', response.data);
     } catch (error) {
       console.error('Error updating data:', error.response ? error.response.data : error.message);
@@ -165,12 +167,12 @@ test("Update API Test", async () => {
   });
 
 
-test("Ticket Status API Test", async () => {
+test.only("Ticket Status API Test", async () => {
     const apiUrl = Url + "tickets/status/6559a7192dbb22c4b397e001";
-    const ticketId = "657809d4c7547e1050475cf1";
+    const ticketId = "657c293b8729b3dba0c38bbc";
 
     const headers = {
-        "Content-Type": "application/json",
+        "Content-Type": "aplication/json",
         "accesstoken": accessToken
     };
 
@@ -186,6 +188,7 @@ test("Ticket Status API Test", async () => {
         expect(ticketStatus).toBeDefined();
     } catch (error) {
         console.error("Error fetching ticket status:", error.message);
-        fail(`Error fetching ticket status: ${error.message}`);
+        throw new Error(`Error fetching ticket status: ${error.message}`);
     }
 });
+
